@@ -3,11 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dsafsadl의 홈페이지</title>
+    <title>Yongjae Song | Researcher</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background-image: url('https://images.unsplash.com/photo-1620912189836-1a7f03417fe5?q=80&w=2071');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.75);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        nav .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-weight: 500;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            transition: color 0.3s, border-bottom-color 0.3s;
+        }
+
+        nav ul li a.active, nav ul li a:hover {
+            color: #fff;
+            border-bottom-color: #00aaff;
+        }
+
+        .content-area {
+            padding: 40px 0;
+        }
+        
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        .home-box {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .profile-pic-square {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 4px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .home-box h1 {
+            margin: 0 0 10px 0;
+            font-size: 1.8rem;
+            color: #fff;
+        }
+        
+        .home-box hr {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            margin: 30px 0;
+        }
+
+        .home-subsection {
+            text-align: left;
+        }
+
+        .home-subsection h2 {
+            color: #00aaff;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-box {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .section-box h2 {
+            margin-top: 0;
+            font-size: 2rem;
+            color: #00aaff;
+            border-bottom: 1px solid #00aaff;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        ul.info-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.info-list li {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        ul.info-list li strong {
+            color: #00d4ff;
+        }
+    </style>
 </head>
 <body>
-    <h1>안녕하세요!</h1>
-    <p>dsafsadl의 개인 홈페이지입니다.</p>
-    <p>이 페이지는 곧 업데이트될 예정입니다.</p>
+    <div class="overlay">
+        <header>
+            <div class="container">
+                <nav>
+                    <div class="logo">Intelligent Microsystems Laboratory</div>
+                    <ul class="nav-links">
+                        <li><a href="#home" class="nav-link">Home</a></li>
+                        <li><a href="#research" class="nav-link">Research</a></li>
+                        <li><a href="#publications" class="nav-link">Publications</a></li>
+                        <li><a href="#award" class="nav-link">Award</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="content-area">
+            <div class="container">
+                <div id="home" class="tab-content">
+                    <div class="home-box">
+                        <!-- [수정 완료] 이미지 경로를 GitHub 저장소의 파일 이름으로 변경했습니다. -->
+                        <img src="1.png" alt="Yongjae Song 프로필 사진" class="profile-pic-square">
+                        
+                        <h1>안녕하세요.</h1>
+                        <p style="font-size: 1.1rem; color: #e0e0e0;">
+                            한양대학교 ERICA 나노광전자학과 석사과정 송용재입니다.<br>
+                            차세대 디스플레이 기술 개발 연구를 진행하고 있습니다.
+                        </p>
+                        
+                        <hr>
+
+                        <div class="home-subsection">
+                            <h2>Education</h2>
+                            <ul class="info-list">
+                                <li>
+                                    <strong>M.S. Student</strong> | Hanyang University (2025.03 ~ Present)<br>
+                                    <span style="color: #ccc;">Department of Photonics and Nanoelectronics</span>
+                                </li>
+                                <li>
+                                    <strong>B.S.</strong> | Myongji University (2019.03 ~ 2025.02)<br>
+                                    <span style="color: #ccc;">Department of Electronics Engineering</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <hr>
+                        
+                        <div class="home-subsection">
+                            <h2>Contact</h2>
+                            <ul class="info-list">
+                                <li><strong>Email:</strong> mollm863@hanyang.ac.kr</li>
+                                <li><strong>Office:</strong> Room 503, 2nd Science & Technology Bldg., Hanyang University ERICA</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research Section -->
+                <div id="research" class="tab-content">
+                    <div class="section-box">
+                        <h2>Research Interests</h2>
+                        <ul class="info-list">
+                            <li>
+                                <strong>Micro-LED 소자 개발 (Micro-LED Device Development)</strong>
+                                <p style="padding-left:10px; color:#ddd;">GaN on Silicon (GaN-on-Si) 웨이퍼를 기반으로 50µm 이하 크기의 Micro-LED 칩을 제작하고 소자 특성을 최적화하는 공정 연구를 수행합니다.</p>
+                            </li>
+                            <li>
+                                <strong>초소형 소자 전사 공정 (Micro-Scale Device Transfer Process)</strong>
+                                <p style="padding-left:10px; color:#ddd;">유체 동역학을 이용한 자기 조립(Fluidic Self-Assembly, FSA) 방식을 통해, 제작된 Micro-LED 칩을 대면적 기판에 빠르고 병렬적으로 전사하여 높은 수율을 확보하는 공정을 개발합니다.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Publications Section -->
+                <div id="publications" class="tab-content">
+                     <div class="section-box">
+                        <h2>Publications</h2>
+                        <p>연구 실적이 준비 중입니다. (Publications are in preparation.)</p>
+                    </div>
+                </div>
+                
+                <!-- Award Section -->
+                <div id="award" class="tab-content">
+                     <div class="section-box">
+                        <h2>Award</h2>
+                        <ul class="info-list">
+                            <li><strong>2025:</strong> IMID 2025 포스터 발표 우수상 (Distinguished Poster Paper Award)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            function showTab(targetId) {
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                const targetLink = document.querySelector(`.nav-link[href="${targetId}"]`);
+                const targetContent = document.querySelector(targetId);
+                if (targetLink) targetLink.classList.add('active');
+                if (targetContent) targetContent.classList.add('active');
+            }
+            showTab('#home');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showTab(link.getAttribute('href'));
+                });
+            });
+        });
+    </script>
 </body>
 </html>
