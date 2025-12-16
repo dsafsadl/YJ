@@ -79,22 +79,28 @@
             padding: 40px 0;
         }
         
+        /* [수정] 부드러운 전환 효과를 위한 스타일 */
         .tab-content {
             display: none;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            transform: translateY(15px); /* 살짝 아래에서 시작 */
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out; /* 0.4초 동안 부드럽게 */
         }
         
         .tab-content.active {
             display: block;
             opacity: 1;
+            transform: translateY(0); /* 제자리로 이동 */
         }
         
-        .home-box {
+        .home-box, .section-box {
             background-color: rgba(0, 0, 0, 0.6);
             padding: 40px;
             border-radius: 8px;
-            text-align: center;
+        }
+
+        .home-box {
+             text-align: center;
         }
 
         .profile-pic-square {
@@ -122,22 +128,15 @@
             text-align: left;
         }
 
-        .home-subsection h2 {
-            color: #00aaff;
+        .home-subsection h2, .section-box h2 {
+            margin-top: 0;
             font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .section-box {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 40px;
-            border-radius: 8px;
+            color: #00aaff;
+            margin-bottom: 20px;
         }
 
         .section-box h2 {
-            margin-top: 0;
             font-size: 2rem;
-            color: #00aaff;
             border-bottom: 1px solid #00aaff;
             padding-bottom: 10px;
             margin-bottom: 30px;
@@ -179,7 +178,6 @@
             <div class="container">
                 <div id="home" class="tab-content">
                     <div class="home-box">
-                        <!-- [수정 완료] 이미지 경로를 GitHub 저장소의 파일 이름으로 변경했습니다. -->
                         <img src="1.png" alt="Yongjae Song 프로필 사진" class="profile-pic-square">
                         
                         <h1>안녕하세요.</h1>
@@ -260,18 +258,53 @@
             const tabContents = document.querySelectorAll('.tab-content');
 
             function showTab(targetId) {
-                navLinks.forEach(nav => nav.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-                const targetLink = document.querySelector(`.nav-link[href="${targetId}"]`);
+                // 부드러운 효과를 위해 이전 콘텐츠를 먼저 숨깁니다.
+                let activeContent = document.querySelector('.tab-content.active');
+                if (activeContent) {
+                    activeContent.classList.remove('active');
+                }
+
                 const targetContent = document.querySelector(targetId);
-                if (targetLink) targetLink.classList.add('active');
-                if (targetContent) targetContent.classList.add('active');
+                
+                // CSS transition이 적용될 시간을 줍니다.
+                setTimeout(() => {
+                    // 모든 탭 콘텐츠 숨기기 (혹시 모를 중복 active 방지)
+                     tabContents.forEach(content => {
+                        content.style.display = 'none';
+                    });
+                    
+                    if (targetContent) {
+                        // 보여줄 콘텐츠만 display를 block으로 바꾸고 active 클래스 추가
+                        targetContent.style.display = 'block';
+                        // requestAnimationFrame을 사용하여 브라우저가 display 변경을 인지한 후 opacity를 변경하도록 합니다.
+                        requestAnimationFrame(() => {
+                            targetContent.classList.add('active');
+                        });
+                    }
+                }, 150); // 0.15초 후에 새 콘텐츠 표시 시작
+                
+                // 네비게이션 링크 활성화 상태 업데이트
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                const targetLink = document.querySelector(`.nav-link[href="${targetId}"]`);
+                if(targetLink) {
+                    targetLink.classList.add('active');
+                }
             }
-            showTab('#home');
+
+            // 페이지 로드 시 Home 탭을 기본으로 보여줍니다.
+            const initialTab = document.querySelector('#home');
+            if(initialTab) {
+                initialTab.style.display = 'block';
+                initialTab.classList.add('active');
+            }
+             document.querySelector('.nav-link[href="#home"]').classList.add('active');
+
+
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    showTab(link.getAttribute('href'));
+                    const targetId = link.getAttribute('href');
+                    showTab(targetId);
                 });
             });
         });
